@@ -8,6 +8,22 @@ type TreeNode struct {
 	right *TreeNode
 }
 
+func (node *TreeNode) findMin() *TreeNode {
+	curr := node
+	for curr.left != nil {
+		curr = curr.left
+	}
+	return curr
+}
+
+func (node *TreeNode) findMax() *TreeNode {
+	curr := node
+	for curr.right != nil {
+		curr = curr.right
+	}
+	return curr
+}
+
 func (node *TreeNode) insert(key int64, value int64) *TreeNode {
 	if node == nil {
 		node = &TreeNode{key, value, nil, nil}

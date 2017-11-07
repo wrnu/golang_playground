@@ -5,6 +5,24 @@ import (
 	"testing"
 )
 
+func TestFindMin(t *testing.T) {
+	bst := TreeNode{1, 1, nil, nil}
+	bst.insert(0, 0)
+	bst.insert(2, 2)
+	if bst.findMin() != bst.left {
+		t.Errorf("Wrong Min")
+	}
+}
+
+func TestFindMax(t *testing.T) {
+	bst := TreeNode{1, 1, nil, nil}
+	bst.insert(0, 0)
+	bst.insert(2, 2)
+	if bst.findMax() != bst.right {
+		t.Errorf("Wrong Max")
+	}
+}
+
 func TestInsert(t *testing.T) {
 	bst := TreeNode{1, 1, nil, nil}
 	bst.insert(0, 0)
