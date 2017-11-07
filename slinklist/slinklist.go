@@ -1,6 +1,6 @@
 package slinklist
 
-// SLinkList ... Singly SLinkListed List Type
+// SLinkList ... Singly Linked List Type
 type SLinkList struct {
 	value int
 	next  *SLinkList
