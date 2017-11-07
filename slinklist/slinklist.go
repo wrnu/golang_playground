@@ -1,4 +1,4 @@
-package linklist
+package slinklist
 
 // SLinkList ... Singly SLinkListed List Type
 type SLinkList struct {
@@ -16,6 +16,7 @@ func (l *SLinkList) length() int {
 	}
 	return n
 }
+
 func (l *SLinkList) prepend(value int) *SLinkList {
 
 	head := SLinkList{value, l}
