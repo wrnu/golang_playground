@@ -105,6 +105,40 @@ func TestInsertAfter(t *testing.T) {
 	}
 }
 
+func TestDelete(t *testing.T) {
+
+	l := &SLinkList{0, nil}
+	l.append(-10)
+	l.append(10)
+	l.append(100)
+
+	l = l.delete(-10)
+	if l.search(-10) != nil && l.length() == 3 {
+		t.Errorf("Failed to delete middle element")
+	}
+
+	l = l.delete(100)
+	if l.search(1000) != nil && l.length() == 2 {
+		t.Errorf("Failed to delete tail element")
+	}
+
+	l = l.delete(0)
+	if l.search(0) != nil && l.length() == 1 {
+		t.Errorf("Failed to delete head element")
+	}
+
+	len := l.length()
+	l = l.delete(101)
+	if l.length() != len {
+		t.Errorf("Failed delete of value not in list")
+	}
+
+	l = l.delete(10)
+	if l != nil {
+		t.Errorf("Failed to delete last element")
+	}
+}
+
 func TestSearch(t *testing.T) {
 
 	l := SLinkList{0, nil}

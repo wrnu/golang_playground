@@ -44,6 +44,21 @@ func (l *SLinkList) insertAfter(value int) *SLinkList {
 	return l
 }
 
+func (l *SLinkList) delete(value int) *SLinkList {
+	curr := l
+	if curr.value == value {
+		return curr.next
+	}
+	for curr.next != nil {
+		if curr.next.value == value {
+			curr.next = curr.next.next
+			return l
+		}
+		curr = curr.next
+	}
+	return l
+}
+
 func (l SLinkList) reverse() *SLinkList {
 
 	curr := &l

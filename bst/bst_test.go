@@ -57,6 +57,7 @@ func TestDelete(t *testing.T) {
 	if root.key != 0 && root.isBST(math.MinInt64, math.MaxInt64) {
 		t.Errorf("Root Delete Error")
 	}
+
 }
 
 func TestInsert(t *testing.T) {
