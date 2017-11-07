@@ -28,12 +28,23 @@ func test_reverse(n int) bool {
   return true
 }
 
-func TestReverse(t *testing.T) {
+// func TestReverse(t *testing.T) {
+//
+//   cases := []int {1,2,10}
+//   for _, n := range cases {
+//     if !test_reverse(n) {
+//       t.Errorf("Fail %d", n)
+//     }
+//   }
+// }
 
-  cases := []int {1,2,10}
-  for _, n := range cases {
-    if !test_reverse(n) {
-      t.Errorf("Fail %d", n)
-    }
+func TestAppend(t *testing.T) {
+
+  l := Link{0,nil}
+  l.append(1)
+  if l.length() != 2 {
+    t.Errorf("Length Incorrect")
+  } else if l.next.value != 1 {
+    t.Errorf("Value incorret")
   }
 }
