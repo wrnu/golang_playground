@@ -1,9 +1,5 @@
 package linklist
 
-import (
-  "fmt"
-)
-
 type Link struct {
   value int
   next  *Link
@@ -50,51 +46,4 @@ func (l Link) reverse() *Link {
     curr = next
   }
   return prev
-}
-
-// test the Link reverse() interface using list of size n
-func test_reverse(n int) bool {
-
-  list1 := Link{0, nil}
-  for i := 1; i <= n-1; i++ {
-    list1.append(i)
-  }
-
-  list2 := Link{n - 1, nil}
-  for i := n - 2; i >= 0; i-- {
-    list2.append(i)
-  }
-
-  curr1 := &list1
-  curr2 := list2.reverse()
-
-  for curr1 != nil && curr2 != nil {
-    if curr1.value != curr2.value {
-      return false
-    }
-    curr1 = curr1.next
-    curr2 = curr2.next
-  }
-  return true
-}
-
-func RunTests() {
-
-  if test_reverse(1) {
-    fmt.Println("Pass")
-  } else {
-    fmt.Println("Fail")
-  }
-
-  if test_reverse(2) {
-    fmt.Println("Pass")
-  } else {
-    fmt.Println("Fail")
-  }
-
-  if test_reverse(10) {
-    fmt.Println("Pass")
-  } else {
-    fmt.Println("Fail")
-  }
 }
