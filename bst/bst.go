@@ -24,6 +24,26 @@ func (node *TreeNode) findMax() *TreeNode {
 	return curr
 }
 
+func (node *TreeNode) delete(key int64) *TreeNode {
+
+	if key < node.key {
+		node.left = node.left.delete(key)
+	} else if key > node.key {
+		node.right = node.right.delete(key)
+	} else {
+		if node.left == nil {
+			return node.right
+		}
+		if node.right == nil {
+			return node.left
+		}
+		temp := node.right.findMin()
+		node.key = temp.key
+		node.right = node.right.delete(temp.key)
+	}
+	return node
+}
+
 func (node *TreeNode) insert(key int64, value int64) *TreeNode {
 	if node == nil {
 		node = &TreeNode{key, value, nil, nil}
