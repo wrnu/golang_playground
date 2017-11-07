@@ -1,4 +1,4 @@
-package slinklist
+package linklist
 
 import "testing"
 

@@ -1,4 +1,4 @@
-package slinklist
+package linklist
 
 // SLinkList ... Singly SLinkListed List Type
 type SLinkList struct {
