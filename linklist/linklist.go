@@ -16,8 +16,13 @@ func (l *Link) length() int {
 	}
 	return n
 }
+func (l *Link) prepend(value int) *Link {
 
-func (l *Link) append(value int) {
+	head := Link{value, l}
+	return &head
+}
+
+func (l *Link) append(value int) *Link {
 
 	curr := l
 
@@ -27,6 +32,15 @@ func (l *Link) append(value int) {
 
 	tail := Link{value, nil}
 	curr.next = &tail
+
+	return l
+}
+
+func (l *Link) insertAfter(value int) *Link {
+
+	new := Link{value, l.next}
+	l.next = &new
+	return l
 }
 
 func (l Link) reverse() *Link {
@@ -42,4 +56,16 @@ func (l Link) reverse() *Link {
 		curr = next
 	}
 	return prev
+}
+
+func (l *Link) search(value int) *Link {
+
+	curr := l
+	for curr != nil && curr.value != value {
+		curr = curr.next
+	}
+	if curr == nil || curr.value != value {
+		return nil
+	}
+	return curr
 }

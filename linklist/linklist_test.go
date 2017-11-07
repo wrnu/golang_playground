@@ -60,13 +60,67 @@ func TestReverse(t *testing.T) {
 	}
 }
 
+func TestPrepend(t *testing.T) {
+
+	l := Link{0, nil}
+	head := l.prepend(1)
+	if head.length() != 2 {
+		t.Errorf("Length incorrect")
+	}
+	if head.value != 1 {
+		t.Errorf("Head value incorret")
+	}
+	if head.next.value != 0 {
+		t.Errorf("Tail value incorret")
+	}
+}
+
 func TestAppend(t *testing.T) {
 
 	l := Link{0, nil}
 	l.append(1)
 	if l.length() != 2 {
 		t.Errorf("Length Incorrect")
-	} else if l.next.value != 1 {
-		t.Errorf("Value incorret")
+	}
+	if l.value != 0 {
+		t.Errorf("Head value incorret")
+	}
+	if l.next.value != 1 {
+		t.Errorf("Tail value incorret")
+	}
+}
+
+func TestInsertAfter(t *testing.T) {
+
+	l := Link{0, nil}
+	l.insertAfter(1)
+	if l.length() != 2 {
+		t.Errorf("Length Incorrect")
+	}
+	if l.value != 0 {
+		t.Errorf("Head value incorret")
+	}
+	if l.next.value != 1 {
+		t.Errorf("Tail value incorret")
+	}
+}
+
+func TestSearch(t *testing.T) {
+
+	l := Link{0, nil}
+	l.append(1)
+	l.append(2)
+
+	if l.search(0).value != 0 {
+		t.Errorf("Failed to find node")
+	}
+	if l.search(1).value != 1 {
+		t.Errorf("Failed to find node")
+	}
+	if l.search(2).value != 2 {
+		t.Errorf("Failed to find node")
+	}
+	if l.search(3) != nil {
+		t.Errorf("Found node that doesn't exist")
 	}
 }
