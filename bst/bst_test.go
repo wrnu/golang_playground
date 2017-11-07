@@ -47,7 +47,7 @@ func TestDelete(t *testing.T) {
 
 	root = root.delete(1)
 	if root.key != 2 && root.isBST(math.MinInt64, math.MaxInt64) {
-		t.Errorf("Root Delete Error")
+		t.Errorf("Root Delete Error with left and right leaves")
 	}
 
 	left = &TreeNode{0, 0, nil, nil}
@@ -55,7 +55,34 @@ func TestDelete(t *testing.T) {
 
 	root = root.delete(1)
 	if root.key != 0 && root.isBST(math.MinInt64, math.MaxInt64) {
-		t.Errorf("Root Delete Error")
+		t.Errorf("Root Delete Error with left leaf only")
+	}
+
+	right = &TreeNode{2, 2, nil, nil}
+	root = &TreeNode{1, 1, nil, right}
+
+	root = root.delete(1)
+	if root.key != 2 && root.isBST(math.MinInt64, math.MaxInt64) {
+		t.Errorf("Root Delete Error with left leaf only")
+	}
+
+	root = &TreeNode{1, 1, nil, nil}
+	root.insert(10, 10)
+	root.insert(4, 4)
+	root.insert(11, 11)
+	root.delete(10)
+	if root.search(10) != nil && root.isBST(math.MinInt64, math.MaxInt64) {
+		t.Errorf("Delete two child right leaf")
+	}
+
+	root = &TreeNode{1, 1, nil, nil}
+	root.insert(0, 0)
+	root.insert(-10, -10)
+	root.insert(-4, -4)
+	root.insert(-11, -11)
+	root.delete(-10)
+	if root.search(-10) != nil && root.isBST(math.MinInt64, math.MaxInt64) {
+		t.Errorf("Delete two child left leaf")
 	}
 
 }
