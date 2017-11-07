@@ -17,6 +17,18 @@ func TestInsert(t *testing.T) {
 	}
 }
 
+func TestSearch(t *testing.T) {
+	left := &TreeNode{0, 0, nil, nil}
+	right := &TreeNode{2, 2, nil, nil}
+	root := &TreeNode{1, 1, left, right}
+	if root.search(0) != left {
+		t.Errorf("Incorrect Left Node")
+	}
+	if root.search(2) != right {
+		t.Errorf("Incorrect Right Node")
+	}
+}
+
 func TestIsBST(t *testing.T) {
 	left := &TreeNode{0, 0, nil, nil}
 	right := &TreeNode{2, 2, nil, nil}

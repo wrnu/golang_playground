@@ -19,6 +19,16 @@ func (node *TreeNode) insert(key int64, value int64) *TreeNode {
 	return node
 }
 
+func (node *TreeNode) search(key int64) *TreeNode {
+	if node == nil || node.key == key {
+		return node
+	}
+	if key < node.key {
+		return node.left.search(key)
+	}
+	return node.right.search(key)
+}
+
 func (node *TreeNode) isBST(minKey int64, maxKey int64) bool {
 
 	if node == nil {
