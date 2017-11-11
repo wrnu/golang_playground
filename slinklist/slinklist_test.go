@@ -28,6 +28,32 @@ func testReverse(n int) bool {
 	return true
 }
 
+// test the SLinkList reverse() interface using list of size n
+func testReverseRecursion(n int) bool {
+
+	list1 := SLinkList{0, nil}
+	for i := 1; i <= n-1; i++ {
+		list1.append(i)
+	}
+
+	list2 := SLinkList{n - 1, nil}
+	for i := n - 2; i >= 0; i-- {
+		list2.append(i)
+	}
+
+	curr1 := &list1
+	curr2 := (&list2).reverseRecursion()
+
+	for curr1 != nil && curr2 != nil {
+		if curr1.value != curr2.value {
+			return false
+		}
+		curr1 = curr1.next
+		curr2 = curr2.next
+	}
+	return true
+}
+
 func testLength(n int) bool {
 
 	list := SLinkList{0, nil}
@@ -55,6 +81,16 @@ func TestReverse(t *testing.T) {
 	cases := []int{1, 2, 10}
 	for _, n := range cases {
 		if !testReverse(n) {
+			t.Errorf("Fail %d", n)
+		}
+	}
+}
+
+func TestReverseRecursion(t *testing.T) {
+
+	cases := []int{1, 2, 10}
+	for _, n := range cases {
+		if !testReverseRecursion(n) {
 			t.Errorf("Fail %d", n)
 		}
 	}

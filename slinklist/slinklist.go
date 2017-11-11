@@ -74,6 +74,19 @@ func (l SLinkList) reverse() *SLinkList {
 	return prev
 }
 
+func (l *SLinkList) reverseRecursion() *SLinkList {
+
+	curr := l
+	if curr == nil || curr.next == nil {
+		return curr
+	}
+	rev := curr.next.reverseRecursion()
+	curr.next.next = curr
+	curr.next = nil
+
+	return rev
+}
+
 func (l *SLinkList) search(value int) *SLinkList {
 
 	curr := l
