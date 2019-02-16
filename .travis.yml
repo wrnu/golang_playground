@@ -36,8 +36,6 @@ before_script:
 # .golangci.yml file at the top level of your repo.
 script:
   - cd bst
-  - golangci-lint run       # run a bunch of code checkers/linters in parallel
   - go test -v -race ./...  # Run all the tests with the race detector enabled
   - cd ../slinklist
-  - golangci-lint run       # run a bunch of code checkers/linters in parallel
   - go test -v -race ./...  # Run all the tests with the race detector enabled
